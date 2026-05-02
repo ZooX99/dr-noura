@@ -1,85 +1,51 @@
- <script>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Dr. Noura ❤️</title>
+</head>
 
-// ================== Typing Effect ==================
+<body style="background:black; color:white; text-align:center; font-family:sans-serif;">
+
+<h1 id="typing"></h1>
+<h2 id="counter"></h2>
+
+<button onclick="secret()">Secret ❤️</button>
+
+<script>
+
+// typing
 let text = "For Dr. Noura Al-Saif ❤️";
 let i = 0;
-
 function typeWriter(){
   if(i < text.length){
     document.getElementById("typing").innerHTML += text.charAt(i);
     i++;
-    setTimeout(typeWriter, 80);
+    setTimeout(typeWriter,80);
   }
 }
 typeWriter();
 
-// ================== Start الموقع ==================
-function start(){
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("main").style.display = "block";
-  document.getElementById("music").play();
-}
-
-// ================== Counter ==================
+// counter
 let startDate = new Date("2023-12-21");
-
-function updateCounter(){
+setInterval(()=>{
   let now = new Date();
-  let diff = now - startDate;
-
-  let days = Math.floor(diff / (1000 * 60 * 60 * 24));
-  let hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-  let minutes = Math.floor((diff / (1000 * 60)) % 60);
-
+  let days = Math.floor((now - startDate)/(1000*60*60*24));
   document.getElementById("counter").innerText =
-  days + " days, " + hours + " hours, " + minutes + " minutes with you ❤️";
-}
+  days + " days with you ❤️";
+},1000);
 
-setInterval(updateCounter, 1000);
-
-// ================== Scroll Animation ==================
-let sections = document.querySelectorAll("section");
-
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    let top = sec.getBoundingClientRect().top;
-
-    if(top < window.innerHeight - 100){
-      sec.classList.add("show");
-    }
-  });
-});
-
-// ================== Hearts Animation ==================
-setInterval(() => {
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerHTML = "❤️";
-
-  heart.style.left = Math.random() * 100 + "vw";
-  heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-
-  document.body.appendChild(heart);
-
-  setTimeout(() => heart.remove(), 5000);
-}, 300);
-
-// ================== Secret Message ==================
+// secret
 function secret(){
   let pass = prompt("Enter your birthday ❤️");
-
   if(pass === "1111"){
-    alert(
-`You are not just my love…
-You are my pride, my peace, and my favorite part of life ❤️
-
-And if I had to choose one moment that changed everything…
-It would always be the day I met you.
-21/12/2023 ❤️`
-    );
+    alert("You are my pride ❤️");
   } else {
     alert("Try again 😏");
   }
 }
 
 </script>
+
+</body>
+</html>
