@@ -3,67 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Dr. Noura ❤️</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600;700&display=swap" rel="stylesheet">
-
-<style>
-
-body {
-  margin:0;
-  font-family:'Poppins', sans-serif;
-  background:black;
-  color:white;
-  text-align:center;
-  overflow:hidden;
-}
-
-/* Intro Screen */
-#intro {
-  position:fixed;
-  width:100%;
-  height:100%;
-  background:black;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  z-index:10;
-}
-
-#intro h1 {
-  color:gold;
-  font-size:28px;
-}
-
-#intro button {
-  margin-top:20px;
-  padding:10px 25px;
-  background:gold;
-  border:none;
-  border-radius:10px;
-  cursor:pointer;
-}
-
-/* Main Content */
-#main {
-  display:none;
-  padding:20px;
-  overflow-y:auto;
-  height:100vh;
-}
-
-/* Glow */
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&display=swap" rel="stylesheet">
 @keyframes glow {
   from {
     text-shadow:0 0 5px rgba(255,215,0,0.5);
   }
   to {
     text-shadow:0 0 20px rgba(255,215,0,1),
-                 0 0 30px rgba(255,215,0,0.9);
+                0 0 30px rgba(255,215,0,0.9);
   }
 }
 
-/* Fade Up */
 @keyframes fadeUp {
   from {
     opacity:0;
@@ -74,8 +24,70 @@ body {
     transform:translateY(0);
   }
 }
+<style>
+body {
+  margin:0;
+  font-family:'Poppins', sans-serif;
+  background:black;
+  color:white;
+  text-align:center;
+  overflow:hidden;
+}
 
-/* Falling hearts */
+/* شاشة البداية */
+#intro {
+  position:fixed;
+  width:100%;
+  height:100%;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:10;
+}
+
+#intro h1 {
+  color:gold;
+  font-size:2.5em;
+  opacity:0;
+  animation:fadeIn 3s forwards;
+}
+
+@keyframes fadeIn {
+  to { opacity:1; }
+}
+
+/* المحتوى */
+#main {
+  display:none;
+  overflow-y:scroll;
+  height:100vh;
+}
+
+section {
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  padding:20px;
+}
+
+h1 { color:gold; font-size:3em; }
+
+p { max-width:700px; line-height:1.9; font-size:18px; }
+
+button {
+  padding:15px 25px;
+  border:none;
+  background:gold;
+  color:black;
+  border-radius:10px;
+  cursor:pointer;
+}
+
+/* قلوب */
 .heart {
   position:fixed;
   top:-10px;
@@ -84,10 +96,10 @@ body {
 }
 
 @keyframes fall {
-  to {
-    transform:translateY(100vh);
-  }
+  to { transform:translateY(100vh); }
 }
+
+.hidden { display:none; }
 
 </style>
 </head>
@@ -100,79 +112,146 @@ body {
   <button onclick="start()">Enter</button>
 </div>
 
-<!-- Main -->
+<!-- موسيقى -->
+<audio id="music" loop>
+  <source src="song.mp3">
+</audio>
+
+<!-- الموقع -->
 <div id="main">
 
-  <h1 style="color:gold;">Congratulations 🎓</h1>
+<section>
+  <h1>Congratulations 🎓</h1>
+  <p>This is not just a graduation… this is your victory ❤️</p>
+</section>
 
-  <p>This is not just a graduation... this is your victory ❤️</p>
-
-  <p>21 December 2023... The day my life changed forever. The day I met you.</p>
-
-  <h2>864 days with you ❤️</h2>
-
+<section>
   <p>
-    I've seen your struggle... The nights you didn't sleep...
-    The pressure you carried...
-    And still... you kept going. That's what makes you different.
+  21 December 2023…  
+  The day my life changed forever.  
+  The day I met you.
   </p>
+  <h2 id="counter"></h2>
+</section>
 
-  <!-- Photo 1 -->
+<section>
+  <p>
+  I’ve seen your struggle…  
+  The nights you didn’t sleep…  
+  The pressure you carried…  
+
+  And still… you kept going.  
+  That’s what makes you different.
+  </p>
+</section>
+
+<section>
   <img src="photo.jpg" width="250" style="border-radius:15px;">
-
-  <!-- Photo 2 -->
-  <br><br>
-  <img src="photo2.jpg" width="250" style="border-radius:50%; border:3px solid white;">
-
-  <!-- Photo 3 + Text -->
-  <br><br>
-  <img src="photo3.jpg" width="250" style="
-    border-radius:50%;
-    border:3px solid white;
-    box-shadow:0 0 25px rgba(255,215,0,0.7);
-    transition:0.4s;
-  "
-  onmouseover="this.style.transform='scale(1.05)'"
-  onmouseout="this.style.transform='scale(1)'">
-
-  <p style="margin-top:20px;">
-    <span style="
-      font-size:26px;
-      font-weight:700;
-      color:#fff;
-      animation:glow 2s infinite alternate;
-    ">
-      From dreams… to Dr. Noura ❤️
-    </span>
-    <br>
-    <span style="
-      font-size:18px;
-      opacity:0.9;
-      animation:fadeUp 2s ease;
-    ">
-      She heals with her hands… and inspires with her soul.
-    </span>
+  <p>
+  Today… you are Dr. Noura.  
+  And I’ve never been more proud ❤️
   </p>
+</section>
+<img src="./photo2.jpg" width="250" style="border-radius:50%; margin-top:20px; border:3px solid white;">
+
+<p style="margin-top:15px; font-size:20px;">
+  Grace in her eyes,<br>
+  power in her hands.
+</p>
+  <img src="photo3.jpg" width="250" style="
+  border-radius:50%;
+  margin-top:20px;
+  border:3px solid white;
+  box-shadow:0 0 25px rgba(255,215,0,0.7);
+  transition:0.4s;
+" onmouseover="this.style.transform='scale(1.05)'" 
+   onmouseout="this.style.transform='scale(1)'">
+
+<p style="margin-top:20px; text-align:center;">
+
+  <span style="
+    font-size:26px;
+    font-weight:700;
+    color:#fff;
+    text-shadow:0 0 10px rgba(255,215,0,0.9),
+                0 0 20px rgba(255,215,0,0.7),
+                0 0 30px rgba(255,215,0,0.5);
+    animation: glow 2s infinite alternate;
+  ">
+    From dreams… to Dr. Noura ❤️
+  </span>
+
+  <br>
+
+  <span style="
+    font-size:18px;
+    opacity:0.9;
+    display:inline-block;
+    margin-top:8px;
+    animation: fadeUp 2s ease;
+  ">
+    She heals with her hands… and inspires with her soul.
+  </span>
+
+</p>
+<section>
+  <button onclick="showMessage()">Click here ❤️</button>
+  <p id="msg" class="hidden">
+    I love you… but more than that,  
+    I respect the woman you’ve become.  
+
+    And I promise…  
+    I’ll always be here… proud of you ❤️
+  </p>
+</section>
+
+<section>
+  <h1>Forever ❤️</h1>
+</section>
 
 </div>
 
 <script>
 
-function start() {
-  document.getElementById("intro").style.display = "none";
-  document.getElementById("main").style.display = "block";
+// دخول الموقع
+function start(){
+  document.getElementById("intro").style.display="none";
+  document.getElementById("main").style.display="block";
+  document.getElementById("music").play();
+}
 
-  // Hearts effect
-  setInterval(() => {
-    let heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "❤️";
-    heart.style.left = Math.random()*100 + "vw";
-    heart.style.animationDuration = (Math.random()*3+2) + "s";
-    document.body.appendChild(heart);
+// عداد
+let startDate = new Date("2023-12-21");
 
-    setTimeout(()=>heart.remove(),5000);
-  }, 300);
+function updateCounter(){
+  let now = new Date();
+  let diff = now - startDate;
+  let days = Math.floor(diff/(1000*60*60*24));
+
+  document.getElementById("counter").innerText =
+  days + " days with you ❤️";
+}
+
+setInterval(updateCounter,1000);
+
+// قلوب
+function createHeart(){
+  let heart = document.createElement("div");
+  heart.className="heart";
+  heart.innerHTML="❤️";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.animationDuration=(Math.random()*3+2)+"s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(()=>heart.remove(),5000);
+}
+
+setInterval(createHeart,300);
+
+// رسالة
+function showMessage(){
+  document.getElementById("msg").classList.remove("hidden");
 }
 
 </script>
